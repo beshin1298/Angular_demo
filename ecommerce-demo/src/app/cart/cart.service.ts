@@ -4,20 +4,18 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Product } from '../models/product';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CartService {
-  private apiUrl = environment.apiUrl+"/cart"
-  constructor(private http: HttpClient) {
-
-  }
-  addTocart(product: Product): Observable<Product>{
+  private apiUrl = environment.apiUrl + '/cart';
+  constructor(private http: HttpClient) {}
+  addTocart(product: Product): Observable<Product> {
     return this.http.post<Product>(this.apiUrl, product);
   }
-  getCartItem(): Observable<Product[]>{
+  getCartItem(): Observable<Product[]> {
     return this.http.get<Product[]>(this.apiUrl);
   }
-  clearCart(): Observable<void>{
-    return this.http.delete<void>("123");
+  clearCart(): Observable<void> {
+    return this.http.delete<void>(this.apiUrl);
   }
 }

@@ -3,13 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProductListComponent } from './product/product-list/product-list.component';
 import { CartViewComponent } from './cart/cart-view/cart-view.component';
 const routes: Routes = [
-  {path:'', redirectTo:'/products', pathMatch: 'full'},
-  {path:'products', component: ProductListComponent},
-  {path:'cart', component: CartViewComponent}
+  { path: '', redirectTo: '/products', pathMatch: 'full' },
+  { path: 'products', component: ProductListComponent },
+  { path: 'cart', component: CartViewComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
