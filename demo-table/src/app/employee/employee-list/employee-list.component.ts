@@ -8,12 +8,13 @@ import { Employee } from 'src/app/models/employee';
 })
 export class EmployeeListComponent implements OnInit{
   employees: Employee[] = [];
-  num: number = 2;
+  dataSource: any = [];
+  displayColumn: string[] = ['id', "name", 'age', 'position_id']
   constructor(private employeeService: EmployeeService){}
   ngOnInit(): void {
     this.employeeService.getEmployee().subscribe(data=>{
       this.employees = data;
-      console.log(data)
+      this.dataSource = data
     });
   }
 
