@@ -1,4 +1,6 @@
-<div *ngFor="let employee of employees">
-  {{employee.name}}
-
+<div *ngFor="let employee of employees" style="display: flex;">
+  {{employee.id}}"-"
+  <div>{{employee.name}}"-"</div>
+  <div>{{employee.age}}"-"</div>
+  <div>{{employee.position_id}}</div>
 </div>
