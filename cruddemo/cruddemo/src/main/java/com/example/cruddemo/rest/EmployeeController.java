@@ -2,26 +2,33 @@ package com.example.cruddemo.rest;
 
 import com.example.cruddemo.entity.Employee;
 import com.example.cruddemo.service.EmployeeService;
-import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api")
+
 public class EmployeeController {
     EmployeeService employeeService;
 
     @Autowired
+
     public EmployeeController(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
 
+
+
     @GetMapping("/employees")
+    @CrossOrigin(origins = "*")
     public List<Employee> findAll() {
         return employeeService.findAll();
     }
@@ -66,6 +73,16 @@ public class EmployeeController {
             employeeService.deleteEmployee(id);
             return "Delete success employee id "+id;
         }
-
     }
+    @GetMapping("/emps")
+    public List <Employee> getSomeThing(){
+        List<Employee> employeesResult = new ArrayList<Employee>();
+        List<Employee> getAll = findAll();
+        for (Employee employee : getAll) {
+            employeesResult.add(new Employee(employee.getId(), employee.getName(), employee.getAge()));
+        }
+        System.out.println(employeesResult);
+        return employeesResult;
+    }
+
 }

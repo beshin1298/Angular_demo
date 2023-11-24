@@ -14,15 +14,11 @@ public class Position {
     @Column(name = "position_name")
     private String positionName;
 
-    @OneToOne(mappedBy = "position")
-    Employee employee;
-
     public Position() {
     }
 
-    public Position(String positionName, Employee employee) {
+    public Position(String positionName) {
         this.positionName = positionName;
-        this.employee = employee;
     }
 
     public int getId() {
@@ -39,13 +35,5 @@ public class Position {
 
     public void setPositionName(String positionName) {
         this.positionName = positionName;
-    }
-
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
     }
 }

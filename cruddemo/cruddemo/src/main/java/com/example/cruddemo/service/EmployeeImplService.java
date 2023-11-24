@@ -47,5 +47,10 @@ public class EmployeeImplService implements EmployeeService{
          employeeRepo.deleteById(id);
     }
 
+    @Override
+    public List<Employee> getSomeThing() {
+        return employeeRepo.getSomeThing();
+    }
+
 
 }
